@@ -1,0 +1,27 @@
+info:
+  app:
+    name: HCG
+    description: Master microservices kapsamında öğreniyorum.
+    version: 1.0.0
+
+server:
+  port: 8085
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/hcg
+    username: HCG
+    password: hcg12345
+    driverClassName: org.postgresql.Driver

@@ -12,10 +12,10 @@ import java.util.List;
 @Component
 public class UserManagerImpl implements UserManager {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    UserMapper userConverter;
+    private UserMapper userConverter;
 
     @Override
     public UserModel saveUser(UserModel user) {

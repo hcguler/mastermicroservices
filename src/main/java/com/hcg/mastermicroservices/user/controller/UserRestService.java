@@ -14,14 +14,14 @@ import java.util.Map;
 @Validated
 public interface UserRestService {
     @GetMapping(value = "/getUser/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "getAllUsers")
-    public UserModel getUser(@PathVariable Integer id);
+    UserModel getUser(@PathVariable Integer id);
 
     @GetMapping(value = "/getAllUsers", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "getAllUsers")
-    public List<UserModel> getAllUsers();
+    List<UserModel> getAllUsers();
 
     @PostMapping(value = "/save/user", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "saveUser")
-    public ResponseEntity<UserModel> saveUser(@Valid @RequestBody UserModel userModel);
+    ResponseEntity<UserModel> saveUser(@Valid @RequestBody UserModel userModel);
 
     @DeleteMapping(value = "/delete/user/{id}")
-    public Map<String, Boolean> deleteUser(@Positive @PathVariable Integer id);
+    Map<String, Boolean> deleteUser(@Positive @PathVariable Integer id);
 }

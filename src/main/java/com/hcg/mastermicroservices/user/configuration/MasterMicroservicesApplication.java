@@ -1,5 +1,6 @@
 package com.hcg.mastermicroservices.user.configuration;
 
+import com.hcg.mastermicroservices.user.configuration.constants.ApplicationConfigurationConstants;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.Map;
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.hcg.*")
+@EntityScan(basePackages = ApplicationConfigurationConstants.BASE_PACKAGES)
 @EnableJpaRepositories
 public class MasterMicroservicesApplication {
 

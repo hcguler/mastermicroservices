@@ -41,7 +41,7 @@ public class UserRestController implements UserRestService {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedModel.getId())
+                .buildAndExpand(savedModel)
                 .toUri();
         return ResponseEntity.created(location).build();
     }

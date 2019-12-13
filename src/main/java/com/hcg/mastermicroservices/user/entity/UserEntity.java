@@ -26,6 +26,9 @@ public class UserEntity extends BaseEntity {
     @JoinColumn(name = "KISI_ID", referencedColumnName = "KISI_KAYIT_NO", foreignKey = @ForeignKey(name = "FK_USER_KISI0"))
     private KisiEntity kisiEntity;
 
+    @Column(name = "STATUS")
+    private Boolean status;
+
     public UserEntity() {
     }
 
@@ -59,5 +62,13 @@ public class UserEntity extends BaseEntity {
 
     public void setKisiEntity(KisiEntity kisiEntity) {
         this.kisiEntity = kisiEntity;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

@@ -1,26 +1,24 @@
 package com.hcg.mastermicroservices.user.model;
 
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.util.Date;
+import com.hcg.mastermicroservices.user.common.model.BaseModel;
+import com.hcg.mastermicroservices.user.entity.AdresEntity;
+import com.hcg.mastermicroservices.user.entity.KisiEntity;
 
-public class UserModel implements Serializable {
-    private Integer id;
+import java.util.List;
 
-    @NotNull
+public class UserModel extends BaseModel {
     private String userName;
-    private Date createdDate;
+
+    private String password;
+
+    private List<AdresEntity> adresListesi;
+
+    private KisiEntity kisiEntity;
+
+    private Boolean status;
 
     public UserModel() {
 
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getUserName() {
@@ -31,11 +29,35 @@ public class UserModel implements Serializable {
         this.userName = userName;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<AdresEntity> getAdresListesi() {
+        return adresListesi;
+    }
+
+    public void setAdresListesi(List<AdresEntity> adresListesi) {
+        this.adresListesi = adresListesi;
+    }
+
+    public KisiEntity getKisiEntity() {
+        return kisiEntity;
+    }
+
+    public void setKisiEntity(KisiEntity kisiEntity) {
+        this.kisiEntity = kisiEntity;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

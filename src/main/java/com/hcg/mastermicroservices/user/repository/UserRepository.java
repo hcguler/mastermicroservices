@@ -13,5 +13,5 @@ public interface UserRepository extends CrudRepository<UserEntity, Integer> {
     @Query(
             value = "SELECT * FROM USR_USER u WHERE u.status = true ",
             nativeQuery = true)
-    Collection<UserEntity> findAllActiveUsersNative();
+    Collection<UserEntity> findAllActiveUsers();
 }

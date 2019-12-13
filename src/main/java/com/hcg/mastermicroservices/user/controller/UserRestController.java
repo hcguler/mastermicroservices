@@ -35,6 +35,12 @@ public class UserRestController implements UserRestService {
     public List<UserModel> getAllUsers() {
         return userService.getAllUsers();
     }
+
+    @Override
+    public List<UserModel> getAllActiveUsers() {
+        return userService.getAllActiveUsers();
+    }
+
     @Override
     public ResponseEntity<UserModel> saveUser(@RequestBody UserModel userModel) {
         UserModel savedModel = userService.saveUser(userModel);

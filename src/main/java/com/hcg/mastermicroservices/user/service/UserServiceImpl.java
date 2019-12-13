@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserModel> getAllActiveUsers() {
+        return userManager.getAllActiveUsers();
+    }
+
+    @Override
     public void deleteUser(Integer id) {
         userManager.deleteUser(id);
     }

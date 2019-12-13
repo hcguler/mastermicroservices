@@ -11,5 +11,6 @@ public interface UserService {
     UserModel saveUser(@Valid UserModel user);
     UserModel getUserById(@Positive Integer id);
     List<UserModel> getAllUsers();
+    List<UserModel> getAllActiveUsers();
     void deleteUser(@Positive Integer id);
 }

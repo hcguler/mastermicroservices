@@ -13,11 +13,14 @@ import java.util.Map;
 
 @Validated
 public interface UserRestService {
-    @GetMapping(value = "/getUser/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "getAllUsers")
+    @GetMapping(value = "/getUser/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "getUsers")
     UserModel getUser(@PathVariable Integer id);
 
     @GetMapping(value = "/getAllUsers", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "getAllUsers")
     List<UserModel> getAllUsers();
+
+    @GetMapping(value = "/getAllActiveUsers", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "getAllActiveUsers")
+    List<UserModel> getAllActiveUsers();
 
     @PostMapping(value = "/save/user", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, name = "saveUser")
     ResponseEntity<UserModel> saveUser(@Valid @RequestBody UserModel userModel);

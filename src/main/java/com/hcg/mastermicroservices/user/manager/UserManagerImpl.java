@@ -33,6 +33,11 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
+    public List<UserModel> getAllActiveUsers() {
+        return userConverter.userEntityListToUserModelList((List<UserEntity>) userRepository.findAllActiveUsers());
+    }
+
+    @Override
     public void deleteUser(Integer id) {
         UserEntity userEntity = userRepository.findById(id).get();
         userRepository.delete(userEntity);

@@ -16,13 +16,11 @@ public class UserEntity extends BaseEntity {
     @Column(name = "PASSWORD")
     private String password;
 
-    @JsonBackReference
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private List<AdresEntity> adresListesi;
 
-    @JsonManagedReference
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "KISI_ID", referencedColumnName = "KISI_KAYIT_NO", foreignKey = @ForeignKey(name = "FK_USER_KISI0"))
     private KisiEntity kisiEntity;
 

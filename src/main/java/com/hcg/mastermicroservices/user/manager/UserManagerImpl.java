@@ -2,6 +2,7 @@ package com.hcg.mastermicroservices.user.manager;
 
 import com.hcg.mastermicroservices.user.converter.UserMapper;
 import com.hcg.mastermicroservices.user.entity.UserEntity;
+import com.hcg.mastermicroservices.user.exception.UserNotFoundException;
 import com.hcg.mastermicroservices.user.model.UserModel;
 import com.hcg.mastermicroservices.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,10 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public UserModel getUserById(Integer id) {
-        return userConverter.userEntityToUserModel(userRepository.findById(id).get());
+        if (userRepository.findById(id).isPresent()) {
+            return userConverter.userEntityToUserModel(userRepository.findById(id).get());
+        }
+        return null;
     }
 
     @Override
@@ -39,7 +43,10 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public void deleteUser(Integer id) {
-        UserEntity userEntity = userRepository.findById(id).get();
-        userRepository.delete(userEntity);
+        if (userRepository.findById(id).isPresent()) {
+            UserEntity userEntity = userRepository.findById(id).get();
+            userRepository.delete(userEntity);
+        }
+        throw new UserNotFoundException("id=" + id);
     }
 }

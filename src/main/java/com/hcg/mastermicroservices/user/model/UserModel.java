@@ -6,6 +6,9 @@ import com.hcg.mastermicroservices.user.entity.KisiEntity;
 
 import java.util.List;
 
+/**
+ * @author hcguler
+ */
 public class UserModel extends BaseModel {
     private String userName;
 

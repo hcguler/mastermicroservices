@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * @author hcguler
+ */
 @Component
 public class UserManagerImpl implements UserManager {
     @Autowired
@@ -28,7 +31,7 @@ public class UserManagerImpl implements UserManager {
         if (userRepository.findById(id).isPresent()) {
             return userConverter.userEntityToUserModel(userRepository.findById(id).get());
         }
-        return null;
+        throw new UserNotFoundException("id: " + id);
     }
 
     @Override

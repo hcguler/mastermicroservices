@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
+/**
+ * @author hcguler
+ */
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 

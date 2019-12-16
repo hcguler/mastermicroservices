@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author hcguler
+ */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired

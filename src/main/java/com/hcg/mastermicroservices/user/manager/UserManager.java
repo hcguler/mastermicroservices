@@ -7,6 +7,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
+/**
+ * @author hcguler
+ */
 public interface UserManager {
     UserModel saveUser(@Valid UserModel user);
     UserModel getUserById(@Positive Integer id);

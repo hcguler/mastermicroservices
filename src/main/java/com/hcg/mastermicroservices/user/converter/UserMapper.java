@@ -6,6 +6,9 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
+/**
+ * @author hcguler
+ */
 @Mapper(componentModel = "spring")
 public interface UserMapper {
     UserEntity userModelToUserEntity(UserModel userModel);

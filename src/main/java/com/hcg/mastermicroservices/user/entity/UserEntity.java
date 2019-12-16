@@ -7,6 +7,9 @@ import com.hcg.mastermicroservices.user.common.entity.BaseEntity;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author hcguler
+ */
 @Entity
 @Table(name = "USR_USER")
 public class UserEntity extends BaseEntity {

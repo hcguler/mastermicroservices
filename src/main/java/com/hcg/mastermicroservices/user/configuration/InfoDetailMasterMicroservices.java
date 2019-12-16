@@ -11,6 +11,9 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.util.*;
+/**
+ * @author hcguler
+ */
 
 @Component
 public class InfoDetailMasterMicroservices implements InfoContributor {
@@ -24,7 +27,7 @@ public class InfoDetailMasterMicroservices implements InfoContributor {
 
         List<Map<String, String>> details = new ArrayList<>();
         for (Map.Entry<RequestMappingInfo, HandlerMethod> requestMappingInfoHandlerMethodEntry : handlerMethods.entrySet()) {
-            HashMap<String, String> serviceInfoMap = new HashMap<>();
+            HashMap<String, String> serviceInfoMap = new HashMap<>(handlerMethods.entrySet().size());
             RequestMappingInfo requestMappingInfo = requestMappingInfoHandlerMethodEntry.getKey();
 
             String name = requestMappingInfo.getName();

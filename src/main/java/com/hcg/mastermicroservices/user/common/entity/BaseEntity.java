@@ -8,6 +8,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+/**
+ * @author hcguler
+ */
 
 @MappedSuperclass
 public class BaseEntity implements Serializable {

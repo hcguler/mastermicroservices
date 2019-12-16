@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.Map;
+/**
+ * @author hcguler
+ */
 
 @Configuration
 @ComponentScan(basePackages = {"com.hcg.mastermicroservices.user.*"})

@@ -8,7 +8,9 @@ import com.hcg.mastermicroservices.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Positive;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author hcguler
@@ -28,10 +30,33 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public UserModel getUserById(Integer id) {
-        if (userRepository.findById(id).isPresent()) {
-            return userConverter.userEntityToUserModel(userRepository.findById(id).get());
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
+        if (optionalUserEntity.isPresent()) {
+            return userConverter.userEntityToUserModel(optionalUserEntity.get());
         }
         throw new UserNotFoundException("id: " + id);
+    }
+
+    @Override
+    public UserModel activateUser(@Positive Integer id) {
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
+        if (optionalUserEntity.isPresent()) {
+            UserEntity userEntity = optionalUserEntity.get();
+            userEntity.setStatus(true);
+            return userConverter.userEntityToUserModel(userRepository.save(userEntity));
+        }
+        throw new UserNotFoundException("id=" + id);
+    }
+
+    @Override
+    public UserModel deacticateUser(@Positive Integer id) {
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
+        if (optionalUserEntity.isPresent()) {
+            UserEntity userEntity = optionalUserEntity.get();
+            userEntity.setStatus(false);
+            return userConverter.userEntityToUserModel(userRepository.save(userEntity));
+        }
+        throw new UserNotFoundException("id=" + id);
     }
 
     @Override
@@ -47,9 +72,9 @@ public class UserManagerImpl implements UserManager {
     @Override
     public void deleteUser(Integer id) {
         if (userRepository.findById(id).isPresent()) {
-            UserEntity userEntity = userRepository.findById(id).get();
-            userRepository.delete(userEntity);
+            userRepository.deleteById(id);
+        } else {
+            throw new UserNotFoundException("id=" + id);
         }
-        throw new UserNotFoundException("id=" + id);
     }
 }

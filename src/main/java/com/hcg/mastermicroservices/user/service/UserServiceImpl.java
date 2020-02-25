@@ -6,6 +6,7 @@ import com.hcg.mastermicroservices.user.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.Positive;
 import java.util.List;
 
 /**
@@ -24,6 +25,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserModel getUserById(Integer id) {
         return userManager.getUserById(id);
+    }
+
+    @Override
+    public UserModel activateUser(@Positive Integer id) {
+        return userManager.activateUser(id);
+    }
+
+    @Override
+    public UserModel deacticateUser(@Positive Integer id) {
+        return userManager.deacticateUser(id);
     }
 
     @Override

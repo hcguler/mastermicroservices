@@ -25,3 +25,8 @@ spring:
     username: HCG
     password: hcg12345
     driverClassName: org.postgresql.Driver
+
+logging:
+  level:
+    com:
+      hcg: DEBUG

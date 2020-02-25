@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface UserService {
     UserModel saveUser(@Valid UserModel user);
+    UserModel updateUser(@Valid UserModel user);
     UserModel getUserById(@Positive Integer id);
     UserModel activateUser(@Positive Integer id);
     UserModel deacticateUser(@Positive Integer id);

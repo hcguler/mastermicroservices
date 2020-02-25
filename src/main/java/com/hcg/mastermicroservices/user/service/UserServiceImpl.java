@@ -6,6 +6,7 @@ import com.hcg.mastermicroservices.user.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
@@ -20,6 +21,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserModel saveUser(UserModel user) {
         return userManager.saveUser(user);
+    }
+
+    @Override
+    public UserModel updateUser(@Valid UserModel user) {
+        return userManager.updateUser(user);
     }
 
     @Override

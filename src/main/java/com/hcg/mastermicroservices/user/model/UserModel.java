@@ -4,18 +4,25 @@ import com.hcg.mastermicroservices.user.common.model.BaseModel;
 import com.hcg.mastermicroservices.user.entity.AdresEntity;
 import com.hcg.mastermicroservices.user.entity.KisiEntity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
  * @author hcguler
  */
 public class UserModel extends BaseModel {
+    @NotNull
+    @Size(max = 50)
     private String userName;
 
+    @NotNull
+    @Size(max = 25)
     private String password;
 
     private List<AdresEntity> adresListesi;
 
+    @NotNull
     private KisiEntity kisiEntity;
 
     private Boolean status;

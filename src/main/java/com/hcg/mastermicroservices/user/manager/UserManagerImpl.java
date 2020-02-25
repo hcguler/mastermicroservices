@@ -8,6 +8,7 @@ import com.hcg.mastermicroservices.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +26,11 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public UserModel saveUser(UserModel user) {
+        return userConverter.userEntityToUserModel(userRepository.save(userConverter.userModelToUserEntity(user)));
+    }
+
+    @Override
+    public UserModel updateUser(@Valid UserModel user) {
         return userConverter.userEntityToUserModel(userRepository.save(userConverter.userModelToUserEntity(user)));
     }
 

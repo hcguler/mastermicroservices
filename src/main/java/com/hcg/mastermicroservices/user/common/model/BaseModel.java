@@ -1,5 +1,6 @@
 package com.hcg.mastermicroservices.user.common.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -15,7 +16,8 @@ import java.util.Date;
 public class BaseModel implements Serializable {
 
     private Integer id;
-
+    
+    @ApiModelProperty(notes = "Kayıtın oluşturulduğu tarih bilgisidir.")
     private Date createdDate;
 
     private Date updatedDate;

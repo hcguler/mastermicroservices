@@ -17,7 +17,7 @@ public class UserModel extends BaseModel {
     private String userName;
 
     @NotNull
-    @Size(max = 25)
+    @Size(max = 25,message = "Kullanıcıya ait şifre bilgisidir 25 karakterden fazla olamaz.")
     private String password;
 
     private List<AdresEntity> adresListesi;

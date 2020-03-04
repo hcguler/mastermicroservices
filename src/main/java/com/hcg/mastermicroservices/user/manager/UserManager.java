@@ -1,6 +1,5 @@
 package com.hcg.mastermicroservices.user.manager;
 
-import com.hcg.mastermicroservices.user.entity.UserEntity;
 import com.hcg.mastermicroservices.user.model.UserModel;
 
 import javax.validation.Valid;

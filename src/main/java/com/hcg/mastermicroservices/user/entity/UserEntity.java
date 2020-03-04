@@ -1,7 +1,5 @@
 package com.hcg.mastermicroservices.user.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hcg.mastermicroservices.user.common.entity.BaseEntity;
 
 import javax.persistence.*;

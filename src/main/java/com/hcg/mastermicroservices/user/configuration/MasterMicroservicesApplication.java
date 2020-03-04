@@ -1,18 +1,15 @@
 package com.hcg.mastermicroservices.user.configuration;
 
 import com.hcg.mastermicroservices.user.configuration.constants.ApplicationConfigurationConstants;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import java.util.Map;
+import java.util.Locale;
 /**
  * @author hcguler
  */
@@ -26,4 +23,10 @@ public class MasterMicroservicesApplication {
         SpringApplication.run(MasterMicroservicesApplication.class,args);
     }
 
+    @Bean
+    public LocaleResolver localeResolver(){
+        SessionLocaleResolver sessionLocaleResolver =  new SessionLocaleResolver();
+        sessionLocaleResolver.setDefaultLocale(Locale.US);
+        return sessionLocaleResolver;
+    }
 }

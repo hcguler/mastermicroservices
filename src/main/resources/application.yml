@@ -13,6 +13,8 @@ management:
         include: "*"
 
 spring:
+  messages:
+    basename: messages
   jpa:
     database: POSTGRESQL
     show-sql: false

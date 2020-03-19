@@ -2,9 +2,12 @@ package com.hcg.mastermicroservices.user.manager;
 
 import com.hcg.mastermicroservices.user.converter.UserMapper;
 import com.hcg.mastermicroservices.user.entity.UserEntity;
+import com.hcg.mastermicroservices.user.exception.UserDoesNotCreateException;
 import com.hcg.mastermicroservices.user.exception.UserNotFoundException;
 import com.hcg.mastermicroservices.user.model.UserModel;
 import com.hcg.mastermicroservices.user.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +21,7 @@ import java.util.Optional;
  */
 @Component
 public class UserManagerImpl implements UserManager {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserManagerImpl.class);
     @Autowired
     private UserRepository userRepository;
 
@@ -26,7 +30,12 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public UserModel saveUser(UserModel user) {
-        return userConverter.userEntityToUserModel(userRepository.save(userConverter.userModelToUserEntity(user)));
+        try {
+            return userConverter.userEntityToUserModel(userRepository.save(userConverter.userModelToUserEntity(user)));
+        } catch (Exception e) {
+            LOGGER.error("kayıt oluşturulamadı", e);
+            throw new UserDoesNotCreateException(e.getMessage());
+        }
     }
 
     @Override

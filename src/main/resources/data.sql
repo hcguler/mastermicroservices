@@ -1,0 +1,4 @@
+insert into usr_adres (created_date, updated_date, obj_version, adres_il, adres_ilce, id) values (CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 0, 'Ankara', 'Etimesgut',1);
+insert into usr_kisi (created_date, updated_date, obj_version, kisi_ad, kisi_kayit_no, kisi_soyad, id) values (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, 'Hüseyin Cihad', 1, 'Güler', 1);
+insert into usr_user (created_date, updated_date, obj_version, kisi_id, password, status, user_name, id) values (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, (select id from usr_kisi where kisi_kayit_no=1), 'password1', true , 'username1', 1);
+update usr_adres set user_id=(select id from usr_user where user_name='username1') where id=1;

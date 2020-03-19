@@ -1,26 +1,17 @@
-package com.hcg.mastermicroservices.user.entity;
+package com.hcg.mastermicroservices.user.model;
 
-import com.hcg.mastermicroservices.user.common.entity.BaseEntity;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.hcg.mastermicroservices.user.common.model.BaseModel;
 
 /**
  * @author hcguler
  */
 
-@Entity
-@Table(name = "USR_KISI")
-public class KisiEntity extends BaseEntity {
-    @Column(name = "KISI_AD")
+public class KisiModel extends BaseModel {
     private String ad;
-    @Column(name = "KISI_SOYAD")
     private String soyad;
-    @Column(name = "KISI_KAYIT_NO", unique= true)
     private Integer kisiKayitNo;
 
-    public KisiEntity() {
+    public KisiModel() {
     }
 
     public String getAd() {

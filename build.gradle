@@ -29,6 +29,7 @@ dependencies {
     compile(
             [group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'],
             [group: 'org.springframework.boot', name: 'spring-boot-starter-web'],
+            [group: 'org.springframework.boot', name: 'spring-boot-starter-security'],
             [group: 'org.mapstruct', name: 'mapstruct', version: mapStructVersion],
             [group: 'org.mapstruct', name: 'mapstruct-jdk8', version: mapStructVersion],
             [group: 'org.mapstruct', name: 'mapstruct-processor', version: mapStructVersion],

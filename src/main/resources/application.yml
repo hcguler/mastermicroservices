@@ -13,6 +13,10 @@ management:
         include: "*"
 
 spring:
+  security:
+    user:
+      name: hcguler
+      password: Ab123456
   messages:
     basename: messages
   jpa:

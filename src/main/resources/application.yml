@@ -37,3 +37,9 @@ logging:
   level:
     com:
       hcg: DEBUG
+
+
+classproperties:
+  maximum: 20
+  minimum: 1
+  description: "TEST AÇIKLAMA"

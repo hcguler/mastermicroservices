@@ -5,13 +5,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import static com.hcg.mastermicroservices.user.configuration.constants.ApplicationConfigurationConstants.BASE_PACKAGES;
+
 /**
  * @author hcguler
  */
 
 @Configuration
-@ComponentScan(basePackages = {"com.hcg.mastermicroservices.user.*"})
-@EntityScan(basePackages = {"com.hcg.mastermicroservices.user.*"})
-@EnableJpaRepositories(basePackages = {"com.hcg.mastermicroservices.user.*"})
+@ComponentScan(basePackages = {BASE_PACKAGES})
+@EntityScan(basePackages = {BASE_PACKAGES})
+@EnableJpaRepositories(basePackages = {BASE_PACKAGES})
 public class MasterMicroservicesConfig {
 }

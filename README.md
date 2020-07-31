@@ -17,3 +17,11 @@ Uygulama içinde **actuator** ve **swagger** aktiftir.
 **port:8085** olarak application.yml üzerinden set edilmiştir.
 Rest api dokümantasyonu için uygulamayı çalıştırdıktan sonra aşağıdaki adresten inceleyebilirsiniz.
 - http://localhost:8085/swagger-ui.html
+
+Spring security aktif olduğu için application.yml içinden swagger erişimi için kullanıcı adı şifre kullanabilirisiniz.
+<pre><code>spring:
+  security:
+    user:
+      name: hcguler
+      password: Ab123456
+</code></pre>

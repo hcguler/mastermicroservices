@@ -20,10 +20,9 @@ public class UserModel extends BaseModel {
     @Size(max = 25,message = "Kullanıcıya ait şifre bilgisidir 25 karakterden fazla olamaz.")
     private String password;
 
-    private List<AdresEntity> adresListesi;
+    private List<AdresModel> adresListesi;
 
-    @NotNull
-    private KisiEntity kisiEntity;
+    private KisiModel kisiModel;
 
     private Boolean status;
 
@@ -47,20 +46,20 @@ public class UserModel extends BaseModel {
         this.password = password;
     }
 
-    public List<AdresEntity> getAdresListesi() {
+    public List<AdresModel> getAdresListesi() {
         return adresListesi;
     }
 
-    public void setAdresListesi(List<AdresEntity> adresListesi) {
+    public void setAdresListesi(List<AdresModel> adresListesi) {
         this.adresListesi = adresListesi;
     }
 
-    public KisiEntity getKisiEntity() {
-        return kisiEntity;
+    public KisiModel getKisiModel() {
+        return kisiModel;
     }
 
-    public void setKisiEntity(KisiEntity kisiEntity) {
-        this.kisiEntity = kisiEntity;
+    public void setKisiModel(KisiModel kisiModel) {
+        this.kisiModel = kisiModel;
     }
 
     public Boolean getStatus() {

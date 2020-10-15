@@ -13,6 +13,8 @@ management:
         include: "*"
 
 spring:
+  banner:
+    location: banner.txt
   security:
     user:
       name: hcguler

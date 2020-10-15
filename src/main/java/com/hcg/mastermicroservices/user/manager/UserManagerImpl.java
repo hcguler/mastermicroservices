@@ -22,16 +22,20 @@ import java.util.Optional;
 @Component
 public class UserManagerImpl implements UserManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserManagerImpl.class);
-    @Autowired
+
     private UserRepository userRepository;
 
     @Autowired
-    private UserMapper userConverter;
+    public UserManagerImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+
 
     @Override
     public UserModel saveUser(UserModel user) {
         try {
-            return userConverter.userEntityToUserModel(userRepository.save(userConverter.userModelToUserEntity(user)));
+            return UserMapper.INSTANCE.userEntityToUserModel(userRepository.save(UserMapper.INSTANCE.userModelToUserEntity(user)));
         } catch (Exception e) {
             LOGGER.error("kayıt oluşturulamadı", e);
             throw new UserDoesNotCreateException(e.getMessage());
@@ -40,14 +44,14 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public UserModel updateUser(@Valid UserModel user) {
-        return userConverter.userEntityToUserModel(userRepository.save(userConverter.userModelToUserEntity(user)));
+        return UserMapper.INSTANCE.userEntityToUserModel(userRepository.save(UserMapper.INSTANCE.userModelToUserEntity(user)));
     }
 
     @Override
     public UserModel getUserById(Integer id) {
         Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
         if (optionalUserEntity.isPresent()) {
-            return userConverter.userEntityToUserModel(optionalUserEntity.get());
+            return UserMapper.INSTANCE.userEntityToUserModel(optionalUserEntity.get());
         }
         throw new UserNotFoundException("id: " + id);
     }
@@ -58,7 +62,7 @@ public class UserManagerImpl implements UserManager {
         if (optionalUserEntity.isPresent()) {
             UserEntity userEntity = optionalUserEntity.get();
             userEntity.setStatus(true);
-            return userConverter.userEntityToUserModel(userRepository.save(userEntity));
+            return UserMapper.INSTANCE.userEntityToUserModel(userRepository.save(userEntity));
         }
         throw new UserNotFoundException("id=" + id);
     }
@@ -69,19 +73,19 @@ public class UserManagerImpl implements UserManager {
         if (optionalUserEntity.isPresent()) {
             UserEntity userEntity = optionalUserEntity.get();
             userEntity.setStatus(false);
-            return userConverter.userEntityToUserModel(userRepository.save(userEntity));
+            return UserMapper.INSTANCE.userEntityToUserModel(userRepository.save(userEntity));
         }
         throw new UserNotFoundException("id=" + id);
     }
 
     @Override
     public List<UserModel> getAllUsers() {
-        return userConverter.userEntityListToUserModelList((List<UserEntity>) userRepository.findAll());
+        return UserMapper.INSTANCE.userEntityListToUserModelList((List<UserEntity>) userRepository.findAll());
     }
 
     @Override
     public List<UserModel> getAllActiveUsers() {
-        return userConverter.userEntityListToUserModelList((List<UserEntity>) userRepository.findAllActiveUsers());
+        return UserMapper.INSTANCE.userEntityListToUserModelList((List<UserEntity>) userRepository.findAllActiveUsers());
     }
 
     @Override

@@ -3,7 +3,6 @@ info:
     name: HCG
     description: Master microservices kapsamında öğreniyorum.
     version: 1.0.0
-
 server:
   port: 8085
 management:
@@ -14,7 +13,7 @@ management:
 
 spring:
   banner:
-    location: banner.txt
+    location: banner/banner.txt
   security:
     user:
       name: hcguler
@@ -34,6 +33,7 @@ spring:
     password: hcg12345
     driverClassName: org.postgresql.Driver
     initialization-mode: always
+
 
 logging:
   level:

@@ -1,7 +1,6 @@
 package com.hcg.mastermicroservices.user.configuration;
 
 import io.micrometer.core.instrument.util.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.info.Info;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Component;
@@ -18,8 +17,11 @@ import java.util.*;
 @Component
 public class InfoDetailMasterMicroservices implements InfoContributor {
 
-    @Autowired
-    private RequestMappingHandlerMapping requestMappingHandlerMapping;
+    private final RequestMappingHandlerMapping requestMappingHandlerMapping;
+
+    public InfoDetailMasterMicroservices(RequestMappingHandlerMapping requestMappingHandlerMapping) {
+        this.requestMappingHandlerMapping = requestMappingHandlerMapping;
+    }
 
     @Override
     public void contribute(Info.Builder builder) {

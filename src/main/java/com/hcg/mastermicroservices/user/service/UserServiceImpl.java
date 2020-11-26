@@ -3,7 +3,6 @@ package com.hcg.mastermicroservices.user.service;
 
 import com.hcg.mastermicroservices.user.manager.UserManager;
 import com.hcg.mastermicroservices.user.model.UserModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -15,8 +14,11 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserManager userManager;
+    private final UserManager userManager;
+
+    public UserServiceImpl(UserManager userManager) {
+        this.userManager = userManager;
+    }
 
     @Override
     public UserModel saveUser(UserModel user) {

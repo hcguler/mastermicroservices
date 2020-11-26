@@ -8,7 +8,6 @@ import com.hcg.mastermicroservices.user.model.UserModel;
 import com.hcg.mastermicroservices.user.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -23,13 +22,11 @@ import java.util.Optional;
 public class UserManagerImpl implements UserManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserManagerImpl.class);
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
     public UserManagerImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
 
     @Override

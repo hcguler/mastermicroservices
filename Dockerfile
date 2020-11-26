@@ -1,0 +1,2 @@
+FROM adoptopenjdk:11.0.8_10-jre-hotspot
+COPY ${RESOURCE_JAR_FILE} ${CONTAINER_JAR_FILE}

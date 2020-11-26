@@ -1,10 +1,11 @@
 package com.hcg.mastermicroservices.user.controller;
 
+import com.hcg.mastermicroservices.user.configuration.context.ApplicationContextHolder;
+import com.hcg.mastermicroservices.user.configuration.properties.ApplicationProperties;
 import com.hcg.mastermicroservices.user.model.UserModel;
 import com.hcg.mastermicroservices.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,15 +29,20 @@ import java.util.Map;
 public class UserControllerImpl implements UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserControllerImpl.class);
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
+
+    public UserControllerImpl(UserService userService, MessageSource messageSource) {
+        this.userService = userService;
+        this.messageSource = messageSource;
+    }
 
     @Override
     public String getTest(Locale locale) {
-        return messageSource.getMessage("hello",null, locale);
+        ApplicationProperties applicationProperties = ApplicationContextHolder.getBean(ApplicationProperties.class);
+        LOGGER.debug("ContextHolder üzerinden static olarak bean çekip değerleri okuma örneği: " + applicationProperties.getDescription());
+        return messageSource.getMessage("hello", null, locale);
     }
 
     @Override
@@ -59,7 +65,7 @@ public class UserControllerImpl implements UserController {
 
     @Override
     public ResponseEntity<UserModel> saveUser(@RequestBody UserModel userModel) {
-            UserModel savedModel = userService.saveUser(userModel);
+        UserModel savedModel = userService.saveUser(userModel);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")

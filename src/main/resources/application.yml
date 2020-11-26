@@ -37,8 +37,10 @@ spring:
 
 logging:
   level:
-    com:
-      hcg: DEBUG
+    com.hcg.mastermicroservices: TRACE
+    org.springframework: INFO
+    org.springframework.web: TRACE
+    org.springframework.cloud.openfeign.support: DEBUG
 
 
 classproperties:

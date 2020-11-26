@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.hcg.mastermicroservices.user.configuration.context.ApplicationContextHolder

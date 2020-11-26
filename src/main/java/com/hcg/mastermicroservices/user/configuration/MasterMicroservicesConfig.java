@@ -16,4 +16,5 @@ import static com.hcg.mastermicroservices.user.configuration.constants.Applicati
 @EntityScan(basePackages = {BASE_PACKAGES})
 @EnableJpaRepositories(basePackages = {BASE_PACKAGES})
 public class MasterMicroservicesConfig {
+
 }

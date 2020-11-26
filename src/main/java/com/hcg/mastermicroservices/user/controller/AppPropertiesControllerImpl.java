@@ -1,25 +1,8 @@
 package com.hcg.mastermicroservices.user.controller;
 
-import com.hcg.mastermicroservices.user.configuration.ApplicationPropertiesClassExample;
-import com.hcg.mastermicroservices.user.model.UserModel;
-import com.hcg.mastermicroservices.user.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.hcg.mastermicroservices.user.configuration.properties.ApplicationProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.validation.Valid;
-import java.net.URI;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 /**
  * @author hcguler
@@ -28,12 +11,15 @@ import java.util.Map;
 @RequestMapping(path = "/appproperties")
 public class AppPropertiesControllerImpl implements AppPropertiesController {
 
-    @Autowired
-    ApplicationPropertiesClassExample applicationPropertiesClassExample;
+    private final ApplicationProperties applicationPropertiesClassExample;
+
+    public AppPropertiesControllerImpl(ApplicationProperties applicationPropertiesClassExample) {
+        this.applicationPropertiesClassExample = applicationPropertiesClassExample;
+    }
 
     @Override
     public String getTest() {
-        StringBuilder  stringBuilder = new StringBuilder("\nMaximum: ")
+        StringBuilder stringBuilder = new StringBuilder("\nMaximum: ")
                 .append(applicationPropertiesClassExample.getMaximum())
                 .append("\n")
                 .append("Minimum: ")

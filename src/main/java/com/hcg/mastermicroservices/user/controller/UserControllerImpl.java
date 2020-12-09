@@ -4,6 +4,7 @@ import com.hcg.mastermicroservices.user.configuration.context.ApplicationContext
 import com.hcg.mastermicroservices.user.configuration.properties.ApplicationProperties;
 import com.hcg.mastermicroservices.user.model.UserModel;
 import com.hcg.mastermicroservices.user.service.UserService;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -43,6 +44,18 @@ public class UserControllerImpl implements UserController {
         ApplicationProperties applicationProperties = ApplicationContextHolder.getBean(ApplicationProperties.class);
         LOGGER.debug("ContextHolder üzerinden static olarak bean çekip değerleri okuma örneği: " + applicationProperties.getDescription());
         return messageSource.getMessage("hello", null, locale);
+    }
+
+    @Override
+    public Map<String, String> getZipTest(Locale locale) {
+        ApplicationProperties applicationProperties = ApplicationContextHolder.getBean(ApplicationProperties.class);
+        LOGGER.debug("ContextHolder üzerinden static olarak bean çekip değerleri okuma örneği: " + applicationProperties.getDescription());
+        String key = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+        Map<String, String> filters = new HashMap<>();
+        for (int i = 0; i < 400000; i++) {
+            filters.put(RandomStringUtils.random(20, true, true), RandomStringUtils.random(40, true, true));
+        }
+        return filters;
     }
 
     @Override

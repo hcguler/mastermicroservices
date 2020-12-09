@@ -5,6 +5,13 @@ info:
     version: 1.0.0
 server:
   port: 8085
+  http2:
+    enabled: true
+  compression:
+    min-response-size: 1024
+    mime-types: application/json
+    enabled: true
+    excluded-user-agents:
 management:
   endpoints:
     web:
@@ -28,7 +35,7 @@ spring:
       ddl-auto: create-drop
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/hcg
+    url: jdbc:postgresql://localhost:5431/hcg
     username: HCG
     password: hcg12345
     driverClassName: org.postgresql.Driver

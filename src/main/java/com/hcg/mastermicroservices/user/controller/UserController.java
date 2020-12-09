@@ -20,6 +20,9 @@ public interface UserController {
     @GetMapping(value = "/getTest", produces = MediaType.APPLICATION_JSON_VALUE, name = "getTest")
     String getTest(@RequestHeader(name = "Accept-Language", required = false) Locale locale);
 
+    @GetMapping(value = "/getZipTest", produces = MediaType.APPLICATION_JSON_VALUE, name = "getTest")
+    Map<String, String> getZipTest(@RequestHeader(name = "Accept-Language", required = false) Locale locale);
+
     @GetMapping(value = "/getUser/{id}", produces = MediaType.APPLICATION_JSON_VALUE, name = "getUsers")
     UserModel getUser(@PathVariable Integer id);
 

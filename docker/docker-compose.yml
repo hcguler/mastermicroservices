@@ -8,4 +8,4 @@ services:
       POSTGRES_PASSWORD: hcg12345
       POSTGRES_DB: hcg
     ports:
-      - '5432:5432'
+      - '5431:5432'
